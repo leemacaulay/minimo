@@ -8,7 +8,27 @@
     {{- with .style -}} {{ . }} {{- else -}} normal {{- end -}}
     {{- else -}} normal {{- end -}}
   '>
-    <img src='{{ if $isMap }}{{ .image }}{{ else }}{{ . }}{{ end }}'
+    <img srcset='{{- if $isMap -}}
+    {{- with ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .image ) -}}
+    {{ (.Resize "320x").RelPermalink }} 320w,
+                 {{ (.Resize "640x").RelPermalink }} 640w,
+                 {{ (.Resize "1280x").RelPermalink }} 1280w
+                 {{- end -}}
+    {{- else -}}
+    {{- with ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" . ) -}}
+    {{ (.Resize "320x").RelPermalink }} 320w,
+                 {{ (.Resize "640x").RelPermalink }} 640w,
+                 {{ (.Resize "1280x").RelPermalink }} 1280w
+                 {{- end -}}
+                 {{- end -}}'
+    sizes='(max-width: 920px) 100vw, 1080px'
+    src='{{ if $isMap }}
+    {{- with ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" .image ) -}}{{ (.Fill "700x470").RelPermalink }}
+    {{- end -}}
+    {{- else -}}
+    {{- with ($.Site.GetPage "section" "uploads").Resources.GetMatch (strings.TrimPrefix "/uploads/" . ) -}}{{ (.Fill "700x470").RelPermalink }}
+    {{- end -}}
+    {{- end -}}'
       {{- if $isMap }}
         {{- with ( .alternate | default .caption ) }} alt='{{ . | markdownify }}'{{ end -}}
       {{ end -}} />
