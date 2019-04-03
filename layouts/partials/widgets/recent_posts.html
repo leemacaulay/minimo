@@ -14,7 +14,7 @@
 
   <ul class='list'>
   {{ range ( first $length ( where .Site.RegularPages "Type" "not in" $config.excludeTypes ) ) }}
-    {{ .Render "li" }}
+    {{ .Render "li.recent" }}
   {{ end }}
   </ul>
 </section>
