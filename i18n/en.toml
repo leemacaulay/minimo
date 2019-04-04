@@ -82,6 +82,10 @@ other = "OK"
 [openAccountInNewTab]
 other = "Open {{ .Platform }} account in new tab"
 
+[outlet]
+one = "Outlet"
+other = "Outlets"
+
 [page]
 other = "Page"
 
