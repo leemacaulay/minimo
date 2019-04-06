@@ -1,6 +1,21 @@
 <svg class='icon' viewbox='0 0 24 24' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' aria-hidden='true'>
   {{ if eq "category" . }}
   <path d="M22,19a2,2,0,0,1-2,2H4a2,2,0,0,1-2-2V5A2,2,0,0,1,4,3H9l2,3h9a2,2,0,0,1,2,2Z"/>
+  {{ else if eq "audio" . }}
+  <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+  <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z" />
+  {{ else if eq "video" . }}
+  <polygon points="23 7 16 12 23 17 23 7" />
+  <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+  {{ else if eq "data" . }}
+  <line x1="12" y1="20" x2="12" y2="10" />
+  <line x1="18" y1="20" x2="18" y2="4" />
+  <line x1="6" y1="20" x2="6" y2="16" />
+  {{ else if eq "online" . }}
+  <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+  <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+  <line x1="6" y1="6" x2="6" y2="6" />
+  <line x1="6" y1="18" x2="6" y2="18" />
   {{ else if eq "tag" . }}
   <path d="M20.59,13.41l-7.17,7.17a2,2,0,0,1-2.83,0L2,12V2H12l8.59,8.59A2,2,0,0,1,20.59,13.41Z"/>
   <line x1="7" y1="7" x2="7" y2="7"/>
